@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alarm Chicken - QRコードで絶対起きる目覚ましアプリ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #080808;
+      color: #f1f1f1;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background-color: #111;
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #ff9800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 8%;
+      gap: 50px;
+      background: radial-gradient(circle at center, #1f1f1f 0%, #080808 100%);
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+    }
+    .tag {
+      display: inline-block;
+      background-color: #ff3d0022;
+      color: #ff3d00;
+      border: 1px solid #ff3d00;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+    .hero-text h1 span {
+      color: #ff3d00;
+    }
+    .hero-text p {
+      font-size: 1.15rem;
+      color: #aaa;
+      margin-bottom: 35px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff9800, #ff3d00);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(255, 61, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 61, 0, 0.6);
+    }
+
+    /* Phone Screenshots */
+    .hero-images {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .mockup {
+      width: 210px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      border: 4px solid #333;
+      transition: transform 0.3s;
+    }
+    .mockup:hover {
+      transform: scale(1.03);
+    }
+
+    /* Showcase Section */
+    .showcase {
+      padding: 90px 8%;
+      background-color: #0f0f0f;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 60px;
+      color: #fff;
+    }
+    .showcase-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .showcase-item {
+      flex: 1;
+      min-width: 300px;
+      background-color: #161616;
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border: 1px solid #262626;
+    }
+    .showcase-item img {
+      width: 180px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      border: 2px solid #333;
+    }
+    .showcase-item h3 {
+      font-size: 1.4rem;
+      color: #ff9800;
+      margin-bottom: 12px;
+    }
+    .showcase-item p {
+      color: #999;
+      font-size: 0.95rem;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 90px 8%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #141414;
+      padding: 30px;
+      border-radius: 12px;
+      border-left: 4px solid #ff9800;
+    }
+    .card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .card p {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      background-color: #050505;
+      color: #444;
+      font-size: 0.85rem;
+      border-top: 1px solid #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">⏰ Alarm Chicken</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="tag">Android対応 省エネ目覚まし</span>
+      <h1>ベッドから出ないと<br><span>絶対に止まらない</span></h1>
+      <p>洗面所や台所に貼ったQRコードをカメラで読み取るまでアラームが鳴り続けます。夜間は有機EL（OLED）に最適化された漆黒モードでバッテリー消費を最小限に抑えます。</p>
+      <a href="#" class="cta-btn">アプリを入手する</a>
+    </div>
+    <div class="hero-images">
+      <!-- 待機画面 -->
+      <img src="standby.png" alt="待機画面" class="mockup">
+      <!-- スキャン画面 -->
+      <img src="alarm.png" alt="アラーム・QRスキャン画面" class="mockup">
+    </div>
+  </section>
+
+  <section class="showcase">
+    <h2 class="section-title">アプリの仕組み</h2>
+    <div class="showcase-grid">
+      <div class="showcase-item">
+        <img src="standby.png" alt="ステルスUI待機画面">
+        <h3>1. 漆黒の省エネ待機画面</h3>
+        <p>就寝中は画面全体が完全な黒になり、有機ELの電力を一切消費しません。画面をタップした時だけ設定時刻がシンプルに浮き上がります。</p>
+      </div>
+      <div class="showcase-item">
+        <img src="alarm.png" alt="QRスキャン画面">
+        <h3>2. 離れた場所でQRスキャン</h3>
+        <p>指定時刻になると大音量とともにカメラが即座に起動。「朝です！QRコードをかざしてください！」の表示に従って設置場所でスキャンして停止します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2 class="section-title">こだわり機能</h2>
+    <div class="feature-cards">
+      <div class="card">
+        <h4>二度寝を強力に防止</h4>
+        <p>ベッドから離れた場所にQRコードを設置すれば、物理的に布団から出なければアラームを止められません。</p>
+      </div>
+      <div class="card">
+        <h4>オンデマンドカメラ起動</h4>
+        <p>待機中に余計な処理やカメラ起動を行わないため、夜間の発熱やバッテリー消耗を完全に防ぎます。</p>
+      </div>
+      <div class="card">
+        <h4>ステルスUIデザイン</h4>
+        <p>無駄なボタンや眩しい光を徹底排除。夜間の暗い部屋でも目への刺激をカットしたミニマルデザイン。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Alarm Chicken App. All rights reserved.
+  </footer>
+
+</body>
+</html>
